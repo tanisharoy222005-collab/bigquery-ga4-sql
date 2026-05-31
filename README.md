@@ -1,267 +1,224 @@
-````md
-# BigQuery + GA4 SQL Analysis
+# GA4 Website Performance & CRM Attribution Analysis
 
-A production-style collection of BigQuery SQL queries used for GA4 reporting, website performance analysis, user engagement tracking, funnel analysis, and CRM reconciliation.
+Analytics project focused on GA4 reporting, session quality analysis, funnel performance, and CRM attribution reconciliation.
 
-This repository reflects common digital analytics workflows across acquisition, content performance, and conversion reporting using GA4 + BigQuery.
-
----
-
-## Tech Stack
-
-- Google Analytics 4 (GA4)
-- BigQuery SQL
-- CRM export tables
-- UTM campaign attribution
-- Session-level event modeling
-- Funnel reporting
-- Conversion tracking
+This repository documents SQL analysis workflows, reporting documentation, and executive dashboard inputs used to monitor website performance and evaluate marketing channel effectiveness.
 
 ---
 
-## Repository Structure
+## Project overview
 
-bigquery-ga4-sql/
+The goal of this project is to:
+
+- monitor website traffic and engagement using GA4 export data
+- evaluate session quality and user behavior
+- identify funnel drop-off opportunities
+- reconcile GA4 conversions with CRM lead records
+- review attribution accuracy across campaigns
+- support weekly and monthly stakeholder reporting
+
+Primary use cases:
+
+- website performance reporting
+- campaign performance analysis
+- conversion tracking QA
+- source/medium attribution review
+- business reporting for growth and marketing teams
+
+---
+
+## Tech stack
+
+Analytics tools used:
+
+- **Google Analytics 4 (GA4)**
+- **BigQuery SQL**
+- **Google Sheets / reporting exports**
+- **CRM lead source reconciliation**
+- **UTM campaign tracking**
+
+---
+
+## Repository structure
+
+```bash
+ga4-website-performance-analysis/
+│
+├── sql/
+│   ├── session_quality.sql
+│   ├── content_engagement.sql
+│   ├── dropoff_patterns.sql
+│   ├── ga4_vs_crm_reconciliation.sql
+│   └── campaign_attribution_summary.sql
+│
+├── dashboards/
+│   └── weekly_exec_dashboard.md
 │
 ├── docs/
-│   ├── dashboard_metrics.md
-│   └── ga4_event_mapping.md
+│   └── reporting_process.md
 │
-├── session_quality.sql
-├── content_engagement.sql
-├── dropoff_patterns.sql
-├── ga4_vs_crm_reconciliation.sql
-│
+├── CHANGELOG.md
+├── .gitignore
 └── README.md
+```
 
 ---
 
-## SQL Query Documentation
+## SQL analysis included
 
-### session_quality.sql
+### 1. Session quality analysis
 
-```sql
-/*
-Project: GA4 Website Analytics
-Author: Tanisha Roy
+Tracks:
 
-Purpose:
-Analyze session quality across traffic channels and landing pages.
-
-Key metrics:
 - sessions
-- engaged_sessions
-- avg_engagement_time
-- bounce_rate
-- returning_users
+- engaged sessions
+- average engagement time
+- bounce rate
+- traffic quality by source/medium
 
-Use case:
-Weekly reporting and traffic quality monitoring.
+Used to identify:
 
-Business value:
-Helps identify high-performing acquisition sources and improve landing page engagement.
-*/
-````
+- high-value traffic channels
+- weak acquisition sources
+- engagement trends
 
-What this surfaces:
+---
 
-* Session quality by traffic source
-* Engaged sessions vs total sessions
-* Bounce trends
-* Avg engagement time
-* Returning vs new visitor behavior
+### 2. Content engagement reporting
+
+Tracks:
+
+- landing page sessions
+- average time on page
+- page engagement events
+- top-performing content
+
+Used to identify:
+
+- strongest landing pages
+- underperforming content
+- engagement opportunities
+
+---
+
+### 3. Funnel drop-off analysis
+
+Tracks user movement through:
+
+- landing page visit
+- content interaction
+- form start
+- lead submission
+
+Used to identify:
+
+- drop-off points
+- conversion friction
+- optimization opportunities
+
+---
+
+### 4. GA4 vs CRM reconciliation
+
+Compares:
+
+- GA4 conversions
+- CRM lead records
+- campaign attribution
+- source consistency
+
+Used to validate:
+
+- reporting accuracy
+- lead tracking quality
+- attribution gaps
+
+---
+
+### 5. Campaign attribution summary
+
+Reviews:
+
+- UTM campaigns
+- source/medium
+- conversions by campaign
+- traffic quality
 
 Used for:
 
-* Weekly performance reporting
-* Traffic quality monitoring
-* Landing page optimization
-* Marketing attribution review
+- paid campaign analysis
+- acquisition reporting
+- channel performance review
 
 ---
 
-### content_engagement.sql
+## Reporting workflow
 
-```sql
-/*
-Project: GA4 Content Analytics
-Author: Tanisha Roy
+Standard reporting process:
 
-Purpose:
-Measure content engagement performance across website pages.
+1. Validate GA4 export tables
+2. Refresh SQL analysis
+3. QA against CRM and GA4 interface
+4. Update executive dashboard
+5. Prepare weekly insights
+6. Share with stakeholders
 
-Key metrics:
-- page_views
-- avg_time_on_page
-- scroll_depth
-- event_count
-- top_pages
+Detailed workflow available in:
 
-Use case:
-Content performance reporting and page optimization.
-
-Business value:
-Used to identify top-performing content and improve user engagement.
-*/
+```bash
+docs/reporting_process.md
 ```
 
-What this surfaces:
-
-* Page-level engagement
-* Top landing pages
-* Avg time on page
-* Scroll depth
-* Content interaction
-
-Used for:
-
-* Content reporting
-* SEO landing page analysis
-* Engagement optimization
-* UX improvement
-
 ---
 
-### dropoff_patterns.sql
+## Dashboard reporting
 
-```sql
-/*
-Project: GA4 Funnel Analysis
-Author: Tanisha Roy
+Executive dashboard includes:
 
-Purpose:
-Analyze funnel progression and identify drop-off points.
+- sessions
+- users
+- conversion rate
+- leads generated
+- top campaigns
+- landing page performance
+- bounce rate
 
-Key metrics:
-- funnel_step_entries
-- dropoff_rate
-- exit_rate
-- abandonment_by_device
+Reporting cadence:
 
-Use case:
-Conversion funnel monitoring.
+- weekly
+- monthly
 
-Business value:
-Supports CRO initiatives and helps reduce abandonment.
-*/
+Dashboard file:
+
+```bash
+dashboards/weekly_exec_dashboard.md
 ```
 
-What this surfaces:
+---
 
-* Funnel completion rate
-* Drop-off % by step
-* Exit points
-* Device-based abandonment
+## Key outcomes
 
-Used for:
+This analysis supports:
 
-* Funnel analysis
-* CRO reporting
-* UX optimization
-* Conversion tracking
+- website performance visibility
+- campaign attribution accuracy
+- lead tracking validation
+- conversion funnel optimization
+- stakeholder reporting consistency
+- marketing decision-making
 
 ---
 
-### ga4_vs_crm_reconciliation.sql
+## Version history
 
-```sql
-/*
-Project: GA4 + CRM Reconciliation
-Author: Tanisha Roy
+See:
 
-Purpose:
-Compare GA4 conversion tracking with CRM lead records.
-
-Key metrics:
-- ga4_conversions
-- crm_leads
-- source_medium_match
-- duplicate_leads
-- attribution_variance
-
-Use case:
-Lead validation and reporting accuracy checks.
-
-Business value:
-Ensures reliable attribution and improves campaign reporting confidence.
-*/
+```bash
+CHANGELOG.md
 ```
 
-What this surfaces:
-
-* GA4 conversions vs CRM leads
-* Lead source matching
-* Attribution mismatch
-* Duplicate lead checks
-* Conversion validation
-
-Used for:
-
-* Marketing reporting
-* CRM reconciliation
-* Attribution validation
-* Lead quality review
-
 ---
 
-## Supporting Documentation
+## Author
 
-### docs/dashboard_metrics.md
-
-Includes weekly KPI tracking for:
-
-* Sessions
-* Users
-* Engaged sessions
-* Conversion rate
-* Bounce rate
-* Avg engagement time
-* Top landing pages
-* Lead submissions
-* CRM-attributed conversions
-
-Purpose:
-
-Weekly stakeholder reporting and performance review.
-
----
-
-### docs/ga4_event_mapping.md
-
-Includes tracked GA4 events:
-
-* page_view
-* session_start
-* scroll
-* click_cta
-* form_submit
-* generate_lead
-* purchase
-
-Parameters tracked:
-
-* page_location
-* page_title
-* session_source
-* session_medium
-* campaign
-* device_category
-
-Purpose:
-
-Maintain clean implementation and reporting consistency.
-
----
-
-## Notes
-
-Queries are written as standalone examples and can be adapted to production datasets by updating table references.
-
-Example:
-
-analytics_project.events_*
-
-These examples reflect common GA4 + BigQuery reporting workflows across acquisition, engagement, funnel analysis, and CRM reconciliation.
-
-```
-
+Analytics project focused on GA4 reporting, attribution analysis, and business performance insights.
