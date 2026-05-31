@@ -1,34 +1,22 @@
--- FUNNEL DROP-OFF ANALYSIS
--- Purpose:
--- Detect where users abandon the funnel.
-
 WITH funnel AS (
-
-SELECT
-  user_pseudo_id,
-
-  MAX(CASE WHEN event_name='landing_page' THEN 1 ELSE 0 END) AS landing,
-
-  MAX(CASE WHEN event_name='cta_click' THEN 1 ELSE 0 END) AS cta_click,
-
-  MAX(CASE WHEN event_name='form_start' THEN 1 ELSE 0 END) AS form_start,
-
-  MAX(CASE WHEN event_name='form_submit' THEN 1 ELSE 0 END) AS submit
-
-FROM `project.analytics.events_*`
-
-GROUP BY user_pseudo_id
+  SELECT
+    user_pseudo_id,
+    MAX(IF(event_name = 'page_view', 1, 0)) AS visited_page,
+    MAX(IF(event_name = 'form_start', 1, 0)) AS started_form,
+    MAX(IF(event_name = 'generate_lead', 1, 0)) AS submitted_lead
+  FROM `analytics.events_*`
+  GROUP BY user_pseudo_id
 )
 
 SELECT
-  COUNT(*) AS users,
-
-  SUM(landing) AS landing_users,
-
-  SUM(cta_click) AS cta_users,
-
-  SUM(form_start) AS form_started,
-
-  SUM(submit) AS form_submitted
-
+  COUNTIF(visited_page = 1) AS landing_page_visits,
+  COUNTIF(started_form = 1) AS form_starts,
+  COUNTIF(submitted_lead = 1) AS lead_submissions,
+  ROUND(
+    SAFE_DIVIDE(
+      COUNTIF(submitted_lead = 1),
+      COUNTIF(visited_page = 1)
+    ) * 100,
+    2
+  ) AS conversion_rate
 FROM funnel;
