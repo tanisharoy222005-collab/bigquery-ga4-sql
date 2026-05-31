@@ -1,77 +1,87 @@
-# bigquery-ga4-sql
+# BigQuery + GA4 SQL Analysis
 
-Production-style SQL analysis on Google Analytics 4 BigQuery export data.
+A collection of production-style BigQuery SQL used for GA4 web analytics reporting, audience behavior analysis, and CRM reconciliation.
 
-This repository contains reusable queries used for:
+These queries reflect workflows commonly used in digital analytics for:
+- GA4 event analysis
+- Session quality measurement
+- Content performance tracking
+- Funnel drop-off analysis
+- CRM + GA4 data reconciliation
+- Reporting for marketing and business teams
 
-- Session quality analysis
-- Content engagement tracking
-- Funnel drop-off investigation
-- GA4 vs CRM reconciliation
-- Dashboard reporting
-
-## Stack
+## Tech Stack
 
 - Google Analytics 4 (GA4)
 - BigQuery SQL
-- Google Tag Manager (GTM)
-- Looker Studio
-- Python
-- CRM exports
+- CRM export tables
+- UTM campaign attribution
+- Session-level event modeling
 
-## Repository structure
+---
 
-bigquery-ga4-sql/
-
-├── session_quality.sql
-├── content_engagement.sql
-├── dropoff_patterns.sql
-├── ga4_vs_crm_reconciliation.sql
-└── README.md
-
-## What each query does
+## Files
 
 ### session_quality.sql
 
 Measures:
+- Engaged sessions
+- Avg engagement time
+- Bounce/engagement rate
+- Returning vs new users
+- Traffic source comparison
 
-- engaged sessions
-- bounce trends
-- avg pageviews
-- scroll behaviour
+Business use:
+Helps identify high-value traffic and landing page quality.
+
+---
 
 ### content_engagement.sql
 
-Tracks:
+Measures:
+- Page views
+- Scroll depth
+- Avg time on page
+- Event completion
+- Top content by engagement
 
-- page views
-- scroll depth
-- CTA clicks
-- landing page performance
+Business use:
+Helps optimize content performance and identify pages driving conversions.
+
+---
 
 ### dropoff_patterns.sql
 
-Identifies:
+Measures:
+- Funnel step progression
+- Drop-off %
+- Exit points
+- Device-based abandonment
 
-- funnel exits
-- abandoned journeys
-- weak CTA steps
+Business use:
+Used for CRO and UX optimization.
+
+---
 
 ### ga4_vs_crm_reconciliation.sql
 
-Compares:
+Measures:
+- GA4 conversions vs CRM lead count
+- Source/medium matching
+- Lead duplication check
+- Attribution mismatch review
 
-- GA4 tracked leads
-- CRM backend leads
-- conversion mismatches
-- reporting variance
+Business use:
+Helps validate marketing attribution and reporting accuracy.
 
-## Why this repo
+---
 
-Built to support:
+## Notes
 
-- analytics audits
-- reporting dashboards
-- conversion analysis
-- GA4 implementation validation
-- stakeholder recommendations
+Queries are written as standalone examples and can be adapted to production datasets by updating:
+
+project.dataset.table
+
+Example:
+
+analytics_123456.events_*
