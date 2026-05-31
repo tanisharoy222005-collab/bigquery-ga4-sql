@@ -1,17 +1,18 @@
-WITH attribution_data AS (
-SELECT
-user_pseudo_id,
-traffic_source.source AS first_touch_source,
-session_source AS last_touch_source,
-COUNT(*) AS sessions
-FROM analytics_project.events_*
-GROUP BY 1,2,3
+WITH attribution AS (
+  SELECT
+    user_pseudo_id,
+    MIN(traffic_source.source) AS first_touch_source,
+    MAX(traffic_source.source) AS last_touch_source,
+    MAX(IF(event_name = 'generate_lead', 1, 0)) AS converted
+  FROM `analytics.events_*`
+  GROUP BY user_pseudo_id
 )
 
 SELECT
-first_touch_source,
-last_touch_source,
-SUM(sessions) AS total_sessions
-FROM attribution_data
-GROUP BY 1,2
-ORDER BY total_sessions DESC;
+  first_touch_source,
+  last_touch_source,
+  COUNT(*) AS users,
+  COUNTIF(converted = 1) AS conversions
+FROM attribution
+GROUP BY first_touch_source, last_touch_source
+ORDER BY conversions DESC;
