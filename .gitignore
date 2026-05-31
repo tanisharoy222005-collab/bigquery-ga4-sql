@@ -1,0 +1,21 @@
+# Temporary files
+*.tmp
+
+# CSV exports
+*.csv
+
+# Excel exports
+*.xlsx
+
+# Local environment files
+.env
+
+# Mac system files
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
+
+# Logs
+*.log
