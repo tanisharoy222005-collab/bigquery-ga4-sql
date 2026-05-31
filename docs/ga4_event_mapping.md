@@ -1,84 +1,140 @@
 # GA4 Event Mapping
 
-## Standard Events Tracked
+## Overview
 
-### User Activity
+This document defines the GA4 events used in website performance reporting and CRM reconciliation.
 
-- page_view
-- session_start
-- first_visit
-- user_engagement
-- scroll
+Event mapping supports:
 
----
-
-### Content Interaction
-
-- click_cta
-- download
-- video_start
-- video_progress
-- outbound_click
+- reporting consistency
+- funnel analysis
+- campaign tracking
+- conversion validation
 
 ---
 
-### Lead Generation
+## Page tracking events
 
-- form_start
-- form_submit
-- generate_lead
-
----
-
-### Ecommerce / Conversion
-
-- add_to_cart
-- begin_checkout
-- purchase
+| Event | Description | Reporting use |
+|---|---|---|
+| page_view | Landing page visit | Traffic and content reporting |
+| session_start | Session initiated | Session volume |
+| first_visit | New user identified | New user reporting |
 
 ---
 
-## Event Parameters Captured
+## Engagement events
 
-### Page Context
+| Event | Description | Reporting use |
+|---|---|---|
+| scroll | User scroll activity | Engagement measurement |
+| click | CTA or navigation click | Interaction reporting |
+| user_engagement | Active session engagement | Session quality |
+| view_search_results | Internal search activity | User behavior analysis |
+
+---
+
+## Conversion events
+
+| Event | Description | Reporting use |
+|---|---|---|
+| form_start | Lead form initiated | Funnel entry |
+| generate_lead | Lead submitted | Conversion reporting |
+| submit_form | Form completion | Lead tracking |
+| contact_click | Contact CTA interaction | Assisted conversion |
+
+---
+
+## Campaign attribution fields
+
+Tracked dimensions:
+
+| Field | Example |
+|---|---|
+| source | google |
+| medium | cpc |
+| campaign | spring_launch |
+| content | hero_banner |
+| term | ga4_reporting |
+
+Used for:
+
+- source/medium reporting
+- UTM analysis
+- campaign performance
+
+---
+
+## Landing page tracking
+
+Tracked fields:
 
 - page_location
 - page_title
-- page_referrer
+- landing page URL
 
-### Traffic Attribution
+Used for:
 
-- session_source
-- session_medium
-- campaign
-- source_platform
-
-### User Context
-
-- device_category
-- operating_system
-- browser
-- country
-- city
-
-### Conversion Context
-
-- form_name
-- lead_type
-- transaction_id
-- revenue
+- landing page performance
+- bounce rate analysis
+- funnel entry review
 
 ---
 
-## Implementation Notes
+## CRM reconciliation mapping
 
-Events are validated through:
+GA4 events matched to CRM records using:
 
-- GA4 DebugView
-- BigQuery export tables
-- Tag Manager QA
-- CRM reconciliation
+- campaign
+- source / medium
+- landing page
+- lead submission date
+- lead ID when available
 
-Purpose:
+Used to validate:
 
-Maintain consistent tracking and ensure reporting accuracy across acquisition and conversion reporting.
+- lead count accuracy
+- attribution consistency
+- missing conversion records
+
+---
+
+## Funnel event sequence
+
+Standard reporting flow:
+
+1. page_view
+2. scroll / click
+3. form_start
+4. generate_lead
+5. CRM lead creation
+
+Used to identify:
+
+- funnel drop-off
+- conversion friction
+- attribution gaps
+
+---
+
+## QA checks
+
+Before reporting:
+
+- [ ] events firing correctly
+- [ ] source/medium populated
+- [ ] UTM campaigns captured
+- [ ] lead submissions tracked
+- [ ] CRM records matched
+- [ ] landing pages validated
+
+---
+
+## Reporting teams
+
+Used by:
+
+- Marketing
+- Growth
+- Analytics
+- Business stakeholders
