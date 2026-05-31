@@ -1,75 +1,274 @@
-# Dashboard KPIs
+# Dashboard Metrics Reference
 
-## Weekly Performance Metrics
+## Overview
 
-The following KPIs are tracked weekly using GA4 + BigQuery for website performance reporting and stakeholder review.
+This document outlines the core metrics used in weekly and monthly GA4 performance reporting.
 
-### Traffic Metrics
+These metrics support:
 
-- Sessions
-- Users
-- New users
-- Returning users
-- Engaged sessions
-- Avg engagement time
-- Bounce rate
+- website performance monitoring
+- campaign analysis
+- conversion tracking
+- CRM reconciliation
+- stakeholder reporting
 
 ---
 
-### Acquisition Metrics
+## Traffic metrics
 
-- Source / Medium
-- Campaign performance
-- Organic traffic
-- Paid traffic
-- Referral traffic
-- Direct traffic
+### Sessions
 
----
+Definition:
 
-### Content Performance
+Total number of sessions initiated during the reporting period.
 
-- Top landing pages
-- Page views
-- Avg time on page
-- Scroll depth
-- Exit pages
+Used to monitor:
+
+- website traffic volume
+- acquisition trends
+- campaign reach
 
 ---
 
-### Conversion Metrics
+### Users
 
+Definition:
+
+Distinct users active during the reporting period.
+
+Used to monitor:
+
+- audience size
+- user growth
+- returning traffic patterns
+
+---
+
+### New users
+
+Definition:
+
+Users visiting for the first time.
+
+Used to monitor:
+
+- acquisition performance
+- campaign reach
+- audience growth
+
+---
+
+## Engagement metrics
+
+### Engaged sessions
+
+Definition:
+
+Sessions with meaningful user interaction.
+
+Examples:
+
+- active time on site
+- scroll activity
 - CTA clicks
-- Form submissions
-- Lead generation
-- Conversion rate
-- Assisted conversions
+
+Used to monitor:
+
+- traffic quality
+- content effectiveness
 
 ---
 
-### CRM Reconciliation Metrics
+### Average engagement time
 
-- Total leads captured
-- CRM matched leads
-- GA4 tracked conversions
-- Attribution mismatches
-- Duplicate leads
+Definition:
+
+Average time users actively engage with site content.
+
+Used to monitor:
+
+- landing page quality
+- content engagement
+- session value
 
 ---
 
-## Reporting Purpose
+### Bounce rate
 
-Used for:
+Definition:
 
-- Weekly stakeholder reporting
-- Marketing performance reviews
-- Campaign optimization
-- Landing page performance analysis
-- Lead quality validation
-- Executive dashboard reporting
+Percentage of sessions with minimal engagement.
 
-## Reporting Frequency
+Used to monitor:
 
-- Weekly snapshot
-- Monthly trend review
-- Quarterly performance comparison
+- landing page performance
+- traffic relevance
+- content quality
+
+---
+
+## Conversion metrics
+
+### Form starts
+
+Definition:
+
+Users who initiated a lead or inquiry form.
+
+Used to monitor:
+
+- funnel entry
+- CTA effectiveness
+
+---
+
+### Leads submitted
+
+Definition:
+
+Completed lead submissions tracked in GA4.
+
+Used to monitor:
+
+- lead generation
+- conversion volume
+
+---
+
+### Conversion rate
+
+Definition:
+
+Percentage of sessions resulting in lead submission.
+
+Formula:
+
+Conversion rate = leads submitted / sessions
+
+Used to monitor:
+
+- funnel efficiency
+- marketing performance
+
+---
+
+## Campaign metrics
+
+### Source / medium
+
+Examples:
+
+- google / organic
+- google / cpc
+- linkedin / paid-social
+- direct / none
+
+Used to monitor:
+
+- acquisition channel quality
+- channel mix
+
+---
+
+### UTM campaign
+
+Examples:
+
+- spring_launch
+- lead_gen_q2
+- remarketing_campaign
+
+Used to monitor:
+
+- campaign attribution
+- paid traffic performance
+
+---
+
+### Paid traffic performance
+
+Includes:
+
+- sessions
+- engagement
+- conversions
+- cost efficiency review
+
+Used to monitor:
+
+- paid media effectiveness
+- campaign ROI
+
+---
+
+## CRM reconciliation metrics
+
+### Leads matched
+
+Definition:
+
+GA4 leads successfully matched to CRM records.
+
+Used to monitor:
+
+- tracking reliability
+- reporting accuracy
+
+---
+
+### Attribution validation
+
+Definition:
+
+Comparison of GA4 source attribution and CRM source fields.
+
+Used to identify:
+
+- campaign inconsistencies
+- missing attribution
+
+---
+
+### Missing source values
+
+Definition:
+
+Leads missing source or campaign data.
+
+Used to monitor:
+
+- tracking gaps
+- reporting quality
+
+---
+
+## Reporting cadence
+
+### Weekly
+
+Primary focus:
+
+- traffic
+- engagement
+- conversions
+- campaign performance
+
+### Monthly
+
+Primary focus:
+
+- trend analysis
+- attribution review
+- CRM reconciliation
+- performance summaries
+
+---
+
+## Stakeholders
+
+Shared with:
+
+- Marketing team
+- Growth team
+- Business stakeholders
+- Leadership reporting
